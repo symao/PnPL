@@ -155,8 +155,10 @@ void PnPL(const std::vector<cv::Point3f>& pts3d, const std::vector<cv::Point2f>&
     optimizer.addVertex(v_se3);
 
     // set camera intrinsic
-    g2o::CameraParameters * cam_params = new g2o::CameraParameters(K.at<double>(0,0),
-                                Eigen::Vector2d(K.at<double>(0,2),K.at<double>(1,2)), 0.);
+    cv::Mat _K;
+    K.convertTo(_K, CV_64FC1);
+    g2o::CameraParameters * cam_params = new g2o::CameraParameters(_K.at<double>(0,0),
+                                Eigen::Vector2d(_K.at<double>(0,2),_K.at<double>(1,2)), 0.);
     cam_params->setId(0);
     optimizer.addParameter(cam_params);
 
@@ -216,7 +218,7 @@ void PnPL(const std::vector<cv::Point3f>& pts3d, const std::vector<cv::Point2f>&
     // output result
     Eigen::MatrixXd T = Eigen::Isometry3d(v_se3->estimate()).matrix();
     R = (cv::Mat_<float>(3,3)<< T(0,0),T(0,1),T(0,2),
-                                T(1,1),T(1,1),T(1,2),
+                                T(1,0),T(1,1),T(1,2),
                                 T(2,0),T(2,1),T(2,2));
     t = (cv::Mat_<float>(3,1)<<T(0,3),T(1,3),T(2,3));
 }
