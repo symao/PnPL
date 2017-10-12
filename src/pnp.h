@@ -21,4 +21,8 @@ void pnplTrans(const std::vector<cv::Point3f>& pts3d, const std::vector<cv::Poin
                 const std::vector<cv::Vec6f>& lns3d, const std::vector<cv::Vec4f>& lns2d,
                 cv::Point3f& trans);
 
+// projection su = Rz(yaw)p + t, where u in pts2d and p in pts3d
+bool pnpRansacTransYaw(const std::vector<cv::Point3f>& pts3d, const std::vector<cv::Point2f>& pts2d,
+                    cv::Point3f& trans, float& yaw, std::vector<int>& inlier_idx, int ite_cnt = 100, float reprj_err = 8.0);
+
 #endif
