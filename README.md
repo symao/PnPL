@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 
 Perspective-n-Point(PnP) is the problem of estimating the pose of a calibrated camera given a set of n 3D points in the world and their corresponding 2D projections in the image.(https://en.wikipedia.org/wiki/Perspective-n-Point)
 
@@ -6,14 +6,14 @@ We extend this methods to 3D-2D lines, which is called as Perspective-n-Line(PnL
 
 The pnp.cpp(h) contains close form solutions for camera position with known camera attitude(rotation). Note that we need at least 2 point pair in pnpTrans() while at least 3 line pair in pnlTrans().
 
-#Prerequisites
+# Prerequisites
 Prerequisites needed for compiling PnPL using c++:
 - OpenCV (http://opencv.org)
 - g2o (https://github.com/RainerKuemmerle/g2o)
 
 Note that we oply use opencv data structures to store datas. You can change the variable type in codes if you really don't want to use opencv.
 
-#How to run
+# How to run
 - Linux
 ```
 mkdir build
