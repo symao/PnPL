@@ -27,3 +27,8 @@ You can use CMake-GUI to build your project.
 We provide two demos to show how to use,
 1. demo_pnpl solves camera position and rotation (6DoF) with point pairs and line pairs, it needs g2o.
 2. demo_pnptrans solves only camera position(3DoF) with point pairs and line pairs in close form.
+
+# Licence
+The source code is released under GPLv3 license.
+
+Any problem, please contact maoshuyuan123@gmail.com
